@@ -30,20 +30,20 @@
 }
 
 
-.main--div2--table1 {
+.title {
     width: 195px;
     background: grey;
     text-align: center;
 }
 
-.main--div2--table2 {
+.main__div2__result {
     background: grey;
     height: 500px;
     text-align: center;
     width: 195px;
 }
 
-.main--div2--table3 {
+.main__div2__searchField {
     background: grey;
     text-align: center;
     width: 195px;

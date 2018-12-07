@@ -14,7 +14,6 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen hívhatod meg a többi függvényed
   putArrayInOrder(userDatas);
-  console.log(userDatas);
 }
 
 function putArrayInOrder(userDatas) {
@@ -35,18 +34,29 @@ function filterOnlyAlive(userDatas) {
       aliveUserDatas.push(userDatas[i]);
     }
   }
-  console.log(aliveUserDatas);
   createDiv1();
   createDiv2();
+  createAside();
   createTableRows(aliveUserDatas);
+  // filterBio(aliveUserDatas);
+  // fillbio('str');
   return aliveUserDatas;
 }
+// fillbio(str) {
+//   document.getElementById('bio').innerHTML = str;
+// }
+// filterBio(userDatas) {
+//   bar bio = document.getElementById('bio');
+//   userDatas.filter(function (biovalue) {});
+
+//   bio.innerHTML = searchedBio;
+// }
 
 function createDiv1() {
   var main = document.getElementById('main');
   var div1 =
     `
-  <div id="main--div1" class="main-div1">
+  <div id="main__div1" class="main-div1">
   <div>
   `;
   main.innerHTML = div1;
@@ -56,42 +66,63 @@ function createDiv2() {
   var aside = document.getElementById('aside');
   var div2 =
     `
-<div id="main--div2" class="main-div2">
-<div>
+<div id="main__div2" class="main-div2">
+<button>
 `;
   aside.innerHTML = div2;
 }
 
 function createTableRows(aliveUserDatas) {
-  var tableElements = document.getElementById('main--div1');
+  var tableElements = document.getElementById('main__div1');
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
-    <div class="pictureDiv"><img src="/${aliveUserDatas[i].portrait}" alt="">
+    <div class="pictureDiv" id="myButton${i}"><img src="/${aliveUserDatas[i].portrait}" alt="">
     <br> ${aliveUserDatas[i].name}
     </div>
       `;
   }
   tableElements.innerHTML = firstRows;
-  createAside();
+  // createBio(aliveUserDatas);
+  searchfield(aliveUserDatas, aliveUserDatas.length);
+  gotSearch(aliveUserDatas, aliveUserDatas.length);
 }
 
-function createAside(bio) {
-  var aside = document.getElementById('main--div2');
+function gotSearch(characters, length) {
+  document.getElementById('searchButton').addEventListener('click', searchfield(characters, length));
+}
+
+function searchfield(filteredArray, arrayLength) {
+  var searchFieldValue = document.getElementById('searchFieldValue').value;
+  var resultField = document.getElementById('main__div2__result');
+  var result = '';
+  for (var i = 0; i < arrayLength; i += 1) {
+    if (searchFieldValue === filteredArray[i].name) {
+      result += `
+      <img src="/${filteredArray[i].picture}" alt="aemon_targaryen.jpg">
+      <p>${filteredArray[i].name} </p><img src="/assets/houses/${filteredArray[i].house}" alt="${filteredArray[i].house}"></p>
+      <br>
+      <p>${filteredArray[i].bio}</p>
+      `;
+      resultField.innerHTML = result;
+      console.log(filteredArray[i]);
+    }
+  }
+}
+// function createBio(aliveUserDatas) {
+//   var biovalue =
+//     document.getElementById('bio').innerHTML = aliveUserDatas[0].name;
+// }
+
+function createAside() {
+  var aside = document.getElementById('main__div2');
   var asideElements = `
-  <table class="main--div2--table1">
+  <div class="title">Game of Thrones</div>
+  <div class="main__div2__result"> </div>
+    <table class="main__div2__searchField">
     <tr>
-      <td>Game of Thrones</td>
-    </tr>
-    </table>
-    <table class="main--div2--table2">
-    <tr>
-      <td>BIO</td>
-    </tr>
-    </table>
-    <table class="main--div2--table3">
-    <tr>
-      <td><input type="text" placeholder="Search a character"></td>
+      <td><input type="button" id="searchButton()"></td>
+      <td><input type="text" id="searchFieldValue" placeholder="Search a character"></td>
     </tr>
   </table>
   `;
