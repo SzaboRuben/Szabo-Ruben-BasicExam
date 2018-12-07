@@ -13,6 +13,19 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   // Nem szabad globálisba kitenni a userDatas-t!
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen hívhatod meg a többi függvényed
+  putArrayInOrder(userDatas);
+  console.log(userDatas);
+}
+
+function putArrayInOrder(userDatas) {
+  userDatas.sort(function (first, second) {
+    if (first.name > second.name) {
+      1;
+    } else {
+      return -1;
+    }
+  });
+  console.log(userDatas);
 }
 
 getGameOfThronesCharacterDatas(
