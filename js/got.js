@@ -1,6 +1,6 @@
 function getGameOfThronesCharacterDatas(url, callbackFunc) {
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
+  xhttp.onreadystatechange = function unnamed() {
     if (this.readyState === 4 && this.status === 200) {
       callbackFunc(this);
     }
@@ -18,14 +18,15 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
 }
 
 function putArrayInOrder(userDatas) {
-  userDatas.sort(function (first, second) {
-    if (first.name > second.name) {
-      1;
-    } else {
-      return -1;
+  for (var i = 0; i < userDatas.length; i += 1) {
+    for (var j = i + 1; j < userDatas.length; j += 1) {
+      if (userDatas[i].name > userDatas[j].name) {
+        var temp = [userDatas[i], userDatas[j]];
+        userDatas[i] = temp[1];
+        userDatas[j] = temp[0];
+      }
     }
-  });
-  // filterOnlyAlive(userDatas);
+  }
 }
 
 function filterOnlyAlive(userDatas) {
@@ -39,8 +40,6 @@ function filterOnlyAlive(userDatas) {
   createDiv2();
   createAside(aliveUserDatas, aliveUserDatas.length);
   createTableRows(aliveUserDatas);
-  // filterBio(aliveUserDatas);
-  // fillbio('str');
   return aliveUserDatas;
 }
 
@@ -107,7 +106,6 @@ function searchfield(filteredArray, arrayLength) {
       <p>${filteredArray[i].bio}</p>
       `;
     }
-    console.log(result);
   }
   resultField.innerHTML = result;
   return result;
@@ -125,7 +123,6 @@ function createAside() {
     
   </div>
   `;
-
   aside.innerHTML = asideElements;
 }
 

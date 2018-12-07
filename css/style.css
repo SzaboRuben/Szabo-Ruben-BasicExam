@@ -19,7 +19,6 @@
     position: absolute;
     right: 0px;
     float: left;
-
 }
 
 .pictureDiv {
@@ -47,9 +46,13 @@
 }
 
 .main__div2__result__name {
+    width: 50%;
+    position: absolute;
     left: 0px;
 }
 
-main__div2__result__housepics {
+.main__div2__result__housepics {
+    width: 50%;
+    position: absolute;
     right: 0px;
 }
