@@ -62,11 +62,12 @@ function createDiv2() {
 }
 
 function createTableRows(aliveUserDatas) {
+  console.log(aliveUserDatas);
   var tableElements = document.getElementById('main__div1');
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
-    <div class="pictureDiv" id="myButton${i}"><img src="/${
+    <div class="pictureDiv" id="myButton${i}" onclick="searchfield2(${aliveUserDatas[i]})"><img src="/${
   aliveUserDatas[i].portrait
 }" alt="">
     <br> ${aliveUserDatas[i].name}
@@ -75,6 +76,33 @@ function createTableRows(aliveUserDatas) {
   }
   tableElements.innerHTML = firstRows;
   startSearch(aliveUserDatas, aliveUserDatas.length);
+}
+
+
+function searchfield2(filteredArray) {
+  console.log(filteredArray);
+  var searchFieldValue = document.getElementById('searchFieldValue').value;
+  var resultField = document.getElementById('main__div2__result');
+  var result = '';
+  var cimer = '';
+  if (filteredArray.house) {
+    cimer = `<img src="/assets/houses/${filteredArray.house}.png"
+      alt="${filteredArray.house}">`;
+  } else {
+    cimer = '';
+  }
+  if (searchFieldValue === filteredArray.name) {
+    result += `
+      <img src="/${filteredArray.picture}" alt="no picture for ${filteredArray.name}">
+      <span id="main__div2__result__name">${filteredArray.name} </span>
+     <span id="main__div2__result__housepics"> ${cimer}</span>
+      <br>
+      <p>${filteredArray.bio}</p>
+      `;
+  }
+
+  resultField.innerHTML = result;
+  return result;
 }
 
 function startSearch(characters, length) {
@@ -99,7 +127,7 @@ function searchfield(filteredArray, arrayLength) {
     }
     if (searchFieldValue === filteredArray[i].name) {
       result += `
-      <img src="/${filteredArray[i].picture}" alt="aemon_targaryen.jpg">
+      <div><img src="/${filteredArray[i].picture}" alt="no picture for ${filteredArray[i].name}"></div>
       <span id="main__div2__result__name">${filteredArray[i].name} </span>
      <span id="main__div2__result__housepics"> ${cimer}</span>
       <br>

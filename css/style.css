@@ -1,24 +1,21 @@
 .body {
     background: url(/assets/site/mapblue.jpg) no-repeat center center fixed;
     background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -webkit-background-size: cover;
 }
 
 .main {
-    width: 80%;
-    position: absolute;
-    left: 0px;
     float: left;
+    left: 0px;
+    position: absolute;
+    width: 80%;
 
 }
 
 .aside {
-    width: 20%;
-    position: absolute;
-    right: 0px;
     float: left;
+    right: 0px;
+    position: absolute;
+    width: 20%;
 }
 
 .pictureDiv {
@@ -46,13 +43,13 @@
 }
 
 .main__div2__result__name {
-    width: 50%;
-    position: absolute;
     left: 0px;
+    position: absolute;
+    width: 50%;
 }
 
 .main__div2__result__housepics {
-    width: 50%;
     position: absolute;
     right: 0px;
+    width: 50%;
 }
