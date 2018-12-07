@@ -25,7 +25,29 @@ function putArrayInOrder(userDatas) {
       return -1;
     }
   });
-  console.log(userDatas);
+  filterOnlyAlive(userDatas);
+}
+
+function filterOnlyAlive(userDatas) {
+  var aliveUserDatas = [];
+  for (var i = 0; i < userDatas.length; i++) {
+    if (userDatas[i].dead !== true) {
+      aliveUserDatas.push(userDatas[i]);
+    }
+  }
+  console.log(aliveUserDatas);
+  createTableRows(aliveUserDatas);
+  return aliveUserDatas;
+}
+
+function createTableRows(aliveUserDatas) {
+  var table = document.getElementById('main');
+  for (var i = 0; i < aliveUserDatas.length; i += 1) {
+    row +=
+      `
+    
+    `;
+  }
 }
 
 getGameOfThronesCharacterDatas(
