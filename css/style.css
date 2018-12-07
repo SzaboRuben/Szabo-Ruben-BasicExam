@@ -1,4 +1,4 @@
-.main--div1 {
+.body {
     background: url(/assets/site/mapblue.jpg) no-repeat center center fixed;
     background-size: cover;
     -moz-background-size: cover;
@@ -6,19 +6,44 @@
     -webkit-background-size: cover;
 }
 
+.main {
+    width: 1100px;
+    float: left;
+
+}
+
+.aside {
+    text-align: center;
+    float: right;
+
+}
+
 .pictureDiv {
     float: left;
     margin: 15px;
     position: relative;
-    align: center;
+    text-align: center;
 }
 
-.main {
-    width: 1100px;
-    position: absolute;
+
+.main--div2--table1 {
+    width: 195px;
+    background: grey;
+    margin: 10px;
+    text-align: center;
 }
 
-.aside {
-    align: right;
-    position: absolute;
+.main--div2--table2 {
+    background: grey;
+    height: 500px;
+    margin: 10px;
+    text-align: center;
+    width: 195px;
+}
+
+.main--div2--table3 {
+    background: grey;
+    margin: 10px;
+    text-align: center;
+    width: 195px;
 }

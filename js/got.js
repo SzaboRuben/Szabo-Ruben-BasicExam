@@ -68,22 +68,28 @@ function createTableRows(aliveUserDatas) {
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
     <div class="pictureDiv"><img src="/${aliveUserDatas[i].portrait}" alt="">
-    <div> ${aliveUserDatas[i].name}</div>
+    <br> ${aliveUserDatas[i].name}
     </div>
-      
       `;
   }
   tableElements.innerHTML = firstRows;
   createAside();
 }
 
-function createAside() {
+function createAside(bio) {
   var aside = document.getElementById('main--div2');
   var asideElements = `
-  <table>
+  <table class="main--div2--table1">
     <tr>
       <td>Game of Thrones</td>
     </tr>
+    </table>
+    <table class="main--div2--table2">
+    <tr>
+      <td>BIO</td>
+    </tr>
+    </table>
+    <table class="main--div2--table3">
     <tr>
       <td><input type="text" placeholder="Search a character"></td>
     </tr>
