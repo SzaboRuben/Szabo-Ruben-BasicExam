@@ -7,14 +7,18 @@
 }
 
 .main {
-    width: 1100px;
+    width: 85%;
+    position: absolute;
+    left: 0px;
     float: left;
 
 }
 
 .aside {
-    text-align: center;
-    float: right;
+    width: 15%;
+    position: absolute;
+    right: 0px;
+    float: left;
 
 }
 
