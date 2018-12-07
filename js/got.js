@@ -14,6 +14,7 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen hívhatod meg a többi függvényed
   putArrayInOrder(userDatas);
+  filterOnlyAlive(userDatas);
 }
 
 function putArrayInOrder(userDatas) {
@@ -24,7 +25,7 @@ function putArrayInOrder(userDatas) {
       return -1;
     }
   });
-  filterOnlyAlive(userDatas);
+  // filterOnlyAlive(userDatas);
 }
 
 function filterOnlyAlive(userDatas) {
@@ -36,26 +37,16 @@ function filterOnlyAlive(userDatas) {
   }
   createDiv1();
   createDiv2();
-  createAside();
+  createAside(aliveUserDatas, aliveUserDatas.length);
   createTableRows(aliveUserDatas);
   // filterBio(aliveUserDatas);
   // fillbio('str');
   return aliveUserDatas;
 }
-// fillbio(str) {
-//   document.getElementById('bio').innerHTML = str;
-// }
-// filterBio(userDatas) {
-//   bar bio = document.getElementById('bio');
-//   userDatas.filter(function (biovalue) {});
-
-//   bio.innerHTML = searchedBio;
-// }
 
 function createDiv1() {
   var main = document.getElementById('main');
-  var div1 =
-    `
+  var div1 = `
   <div id="main__div1" class="main-div1">
   <div>
   `;
@@ -64,8 +55,7 @@ function createDiv1() {
 
 function createDiv2() {
   var aside = document.getElementById('aside');
-  var div2 =
-    `
+  var div2 = `
 <div id="main__div2" class="main-div2">
 <button>
 `;
@@ -77,56 +67,56 @@ function createTableRows(aliveUserDatas) {
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
-    <div class="pictureDiv" id="myButton${i}"><img src="/${aliveUserDatas[i].portrait}" alt="">
+    <div class="pictureDiv" id="myButton${i}"><img src="/${
+  aliveUserDatas[i].portrait
+}" alt="">
     <br> ${aliveUserDatas[i].name}
     </div>
       `;
   }
   tableElements.innerHTML = firstRows;
-  // createBio(aliveUserDatas);
-  searchfield(aliveUserDatas, aliveUserDatas.length);
-  gotSearch(aliveUserDatas, aliveUserDatas.length);
+  startSearch(aliveUserDatas, aliveUserDatas.length);
 }
 
-function gotSearch(characters, length) {
-  document.getElementById('searchButton').addEventListener('click', searchfield(characters, length));
+function startSearch(characters, length) {
+  document.getElementById('searchButton').addEventListener('click', function unnamed() {
+    searchfield(characters, length);
+  });
 }
 
 function searchfield(filteredArray, arrayLength) {
   var searchFieldValue = document.getElementById('searchFieldValue').value;
   var resultField = document.getElementById('main__div2__result');
   var result = '';
+  var cimer = '';
   for (var i = 0; i < arrayLength; i += 1) {
     if (searchFieldValue === filteredArray[i].name) {
       result += `
       <img src="/${filteredArray[i].picture}" alt="aemon_targaryen.jpg">
-      <p>${filteredArray[i].name} </p><img src="/assets/houses/${filteredArray[i].house}" alt="${filteredArray[i].house}"></p>
+      <span id="main__div2__result__name">${filteredArray[i].name} </span>
+     <span id="main__div2__result__housepics"> <img src="/assets/houses/${filteredArray[i].house}.png" alt="${filteredArray[i].house}"></span>
       <br>
       <p>${filteredArray[i].bio}</p>
       `;
-      resultField.innerHTML = result;
-      console.log(filteredArray[i]);
     }
+    console.log(result);
   }
+  resultField.innerHTML = result;
+  return result;
 }
-// function createBio(aliveUserDatas) {
-//   var biovalue =
-//     document.getElementById('bio').innerHTML = aliveUserDatas[0].name;
-// }
 
 function createAside() {
   var aside = document.getElementById('main__div2');
   var asideElements = `
   <div class="title">Game of Thrones</div>
-  <div class="main__div2__result"> </div>
-    <table class="main__div2__searchField">
-    <tr>
-      <td><input type="button" id="searchButton()"></td>
-      <td><input type="text" id="searchFieldValue" placeholder="Search a character"></td>
-    </tr>
-  </table>
+  <div class="main__div2__result" id="main__div2__result"> </div>
+    <div class="main__div2__searchField">
+    
+      <input type="button" id="searchButton" value="click"></td>
+      <input type="text" id="searchFieldValue" placeholder="Search a character">
+    
+  </div>
   `;
-
 
   aside.innerHTML = asideElements;
 }

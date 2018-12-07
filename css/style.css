@@ -7,7 +7,7 @@
 }
 
 .main {
-    width: 85%;
+    width: 80%;
     position: absolute;
     left: 0px;
     float: left;
@@ -15,7 +15,7 @@
 }
 
 .aside {
-    width: 15%;
+    width: 20%;
     position: absolute;
     right: 0px;
     float: left;
@@ -24,27 +24,32 @@
 
 .pictureDiv {
     float: left;
-    margin: 17px;
+    margin: 10px;
     position: relative;
     text-align: center;
 }
 
 
 .title {
-    width: 195px;
     background: grey;
     text-align: center;
 }
 
 .main__div2__result {
     background: grey;
-    height: 500px;
+    height: 580px;
     text-align: center;
-    width: 195px;
 }
 
 .main__div2__searchField {
     background: grey;
     text-align: center;
-    width: 195px;
+}
+
+.main__div2__result__name {
+    left: 0px;
+}
+
+main__div2__result__housepics {
+    right: 0px;
 }
