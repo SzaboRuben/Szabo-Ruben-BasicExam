@@ -79,9 +79,11 @@ function createTableRows(aliveUserDatas) {
 }
 
 function startSearch(characters, length) {
-  document.getElementById('searchButton').addEventListener('click', function unnamed() {
-    searchfield(characters, length);
-  });
+  document
+    .getElementById('searchButton')
+    .addEventListener('click', function unnamed() {
+      searchfield(characters, length);
+    });
 }
 
 function searchfield(filteredArray, arrayLength) {
@@ -90,11 +92,17 @@ function searchfield(filteredArray, arrayLength) {
   var result = '';
   var cimer = '';
   for (var i = 0; i < arrayLength; i += 1) {
+    if (filteredArray[i].house) {
+      cimer = `<img src="/assets/houses/${filteredArray[i].house}.png"
+      alt="${filteredArray[i].house}">`;
+    } else {
+      cimer = '';
+    }
     if (searchFieldValue === filteredArray[i].name) {
       result += `
       <img src="/${filteredArray[i].picture}" alt="aemon_targaryen.jpg">
       <span id="main__div2__result__name">${filteredArray[i].name} </span>
-     <span id="main__div2__result__housepics"> <img src="/assets/houses/${filteredArray[i].house}.png" alt="${filteredArray[i].house}"></span>
+     <span id="main__div2__result__housepics"> ${cimer}</span>
       <br>
       <p>${filteredArray[i].bio}</p>
       `;
