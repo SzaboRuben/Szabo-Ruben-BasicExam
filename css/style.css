@@ -1,7 +1,24 @@
-.main {
+.main--div1 {
     background: url(/assets/site/mapblue.jpg) no-repeat center center fixed;
     background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
+}
+
+.pictureDiv {
+    float: left;
+    margin: 15px;
+    position: relative;
+    align: center;
+}
+
+.main {
+    width: 1100px;
+    position: absolute;
+}
+
+.aside {
+    align: right;
+    position: absolute;
 }

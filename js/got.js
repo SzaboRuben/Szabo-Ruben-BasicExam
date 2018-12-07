@@ -36,23 +36,62 @@ function filterOnlyAlive(userDatas) {
     }
   }
   console.log(aliveUserDatas);
+  createDiv1();
+  createDiv2();
   createTableRows(aliveUserDatas);
   return aliveUserDatas;
 }
 
+function createDiv1() {
+  var main = document.getElementById('main');
+  var div1 =
+    `
+  <div id="main--div1" class="main-div1">
+  <div>
+  `;
+  main.innerHTML = div1;
+}
+
+function createDiv2() {
+  var aside = document.getElementById('aside');
+  var div2 =
+    `
+<div id="main--div2" class="main-div2">
+<div>
+`;
+  aside.innerHTML = div2;
+}
+
 function createTableRows(aliveUserDatas) {
-  var tableElements = document.getElementById('main');
+  var tableElements = document.getElementById('main--div1');
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
-    <table>
-      <tr>
-        <td><img src="/${aliveUserDatas[i].portrait}" alt=""></td>
-        <td>${aliveUserDatas[i].name}</td>
-      </tr>
-    </table>`;
+    <div class="pictureDiv"><img src="/${aliveUserDatas[i].portrait}" alt="">
+    <div> ${aliveUserDatas[i].name}</div>
+    </div>
+      
+      `;
   }
   tableElements.innerHTML = firstRows;
+  createAside();
+}
+
+function createAside() {
+  var aside = document.getElementById('main--div2');
+  var asideElements = `
+  <table>
+    <tr>
+      <td>Game of Thrones</td>
+    </tr>
+    <tr>
+      <td><input type="text" placeholder="Search a character"></td>
+    </tr>
+  </table>
+  `;
+
+
+  aside.innerHTML = asideElements;
 }
 
 getGameOfThronesCharacterDatas(
