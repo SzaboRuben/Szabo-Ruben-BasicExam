@@ -41,13 +41,18 @@ function filterOnlyAlive(userDatas) {
 }
 
 function createTableRows(aliveUserDatas) {
-  var table = document.getElementById('main');
+  var tableElements = document.getElementById('main');
+  var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
-    row +=
-      `
-    
-    `;
+    firstRows += `
+    <table>
+      <tr>
+        <td><img src="/${aliveUserDatas[i].portrait}" alt=""></td>
+        <td>${aliveUserDatas[i].name}</td>
+      </tr>
+    </table>`;
   }
+  tableElements.innerHTML = firstRows;
 }
 
 getGameOfThronesCharacterDatas(
