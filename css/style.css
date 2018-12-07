@@ -24,7 +24,7 @@
 
 .pictureDiv {
     float: left;
-    margin: 15px;
+    margin: 17px;
     position: relative;
     text-align: center;
 }
@@ -33,21 +33,18 @@
 .main--div2--table1 {
     width: 195px;
     background: grey;
-    margin: 10px;
     text-align: center;
 }
 
 .main--div2--table2 {
     background: grey;
     height: 500px;
-    margin: 10px;
     text-align: center;
     width: 195px;
 }
 
 .main--div2--table3 {
     background: grey;
-    margin: 10px;
     text-align: center;
     width: 195px;
 }
