@@ -62,12 +62,11 @@ function createDiv2() {
 }
 
 function createTableRows(aliveUserDatas) {
-  console.log(aliveUserDatas);
   var tableElements = document.getElementById('main__div1');
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
-    <div class="pictureDiv" id="myButton${i}" onclick="searchfield2(${aliveUserDatas[i]})"><img src="/${
+    <div class="pictureDiv" id="myButton${i}" onclick="presearchfield2(${i})"><img src="/${
   aliveUserDatas[i].portrait
 }" alt="">
     <br> ${aliveUserDatas[i].name}
@@ -78,9 +77,14 @@ function createTableRows(aliveUserDatas) {
   startSearch(aliveUserDatas, aliveUserDatas.length);
 }
 
+// function presearchfield2(i) {
+//   var userDatas = filterOnlyAlive();
+//   console.log(userDatas);
+//   var result = userDatas[i];
+//   searchfield2(result);
+// }
 
 function searchfield2(filteredArray) {
-  console.log(filteredArray);
   var searchFieldValue = document.getElementById('searchFieldValue').value;
   var resultField = document.getElementById('main__div2__result');
   var result = '';
