@@ -66,9 +66,8 @@ function createTableRows(aliveUserDatas) {
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
     firstRows += `
-    <div class="pictureDiv" id="myButton${i}" onclick="presearchfield2(${i})"><img src="/${
-  aliveUserDatas[i].portrait
-}" alt="">
+    <div class="pictureDiv" id="myButton${i}" onclick="preAsideSearchResult2(${i})">
+    <img src="/${aliveUserDatas[i].portrait}" alt="">
     <br> ${aliveUserDatas[i].name}
     </div>
       `;
@@ -77,14 +76,14 @@ function createTableRows(aliveUserDatas) {
   startSearch(aliveUserDatas, aliveUserDatas.length);
 }
 
-// function presearchfield2(i) {
+// function preAsideSearchResult2(i) {
 //   var userDatas = filterOnlyAlive();
 //   console.log(userDatas);
 //   var result = userDatas[i];
-//   searchfield2(result);
+//   asideSearchResult2(result);
 // }
 
-function searchfield2(filteredArray) {
+function asideSearchResult2(filteredArray) {
   var searchFieldValue = document.getElementById('searchFieldValue').value;
   var resultField = document.getElementById('main__div2__result');
   var result = '';
@@ -97,9 +96,11 @@ function searchfield2(filteredArray) {
   }
   if (searchFieldValue === filteredArray.name) {
     result += `
-      <img src="/${filteredArray.picture}" alt="no picture for ${filteredArray.name}">
-      <span id="main__div2__result__name">${filteredArray.name} </span>
-     <span id="main__div2__result__housepics"> ${cimer}</span>
+      <img src="/${filteredArray.picture}" alt="no picture for ${
+  filteredArray.name
+}">
+      <span class="main__div2__result__name">${filteredArray.name} </span>
+     <span class="main__div2__result__housepics"> ${cimer}</span>
       <br>
       <p>${filteredArray.bio}</p>
       `;
@@ -113,11 +114,11 @@ function startSearch(characters, length) {
   document
     .getElementById('searchButton')
     .addEventListener('click', function unnamed() {
-      searchfield(characters, length);
+      asideSearchResult(characters, length);
     });
 }
 
-function searchfield(filteredArray, arrayLength) {
+function asideSearchResult(filteredArray, arrayLength) {
   var searchFieldValue = document.getElementById('searchFieldValue').value;
   var resultField = document.getElementById('main__div2__result');
   var result = '';
@@ -131,9 +132,11 @@ function searchfield(filteredArray, arrayLength) {
     }
     if (searchFieldValue === filteredArray[i].name) {
       result += `
-      <div><img src="/${filteredArray[i].picture}" alt="no picture for ${filteredArray[i].name}"></div>
-      <span id="main__div2__result__name">${filteredArray[i].name} </span>
-     <span id="main__div2__result__housepics"> ${cimer}</span>
+      <div><img  class="main__div2__pics" src="/${
+  filteredArray[i].picture
+}" alt="no picture for ${filteredArray[i].name}"></div>
+      <span class="main__div2__result__name">${filteredArray[i].name} </span>
+     <span class="main__div2__result__housepics"> ${cimer}</span>
       <br>
       <p>${filteredArray[i].bio}</p>
       `;

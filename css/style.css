@@ -1,15 +1,23 @@
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('/fonts/GOT-FONT.ttf');
+}
+
 .body {
     background: url(/assets/site/mapblue.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
 .main {
+    font-family: 'MyWebFont';
+    font-size: 10px;
     float: left;
     left: 0px;
     position: absolute;
     width: 80%;
 
 }
+
 
 .aside {
     float: left;
@@ -28,7 +36,12 @@
 
 .title {
     background: grey;
+    font-family: 'MyWebFont';
     text-align: center;
+}
+
+.title:hover {
+    color: red;
 }
 
 .main__div2__result {
@@ -43,13 +56,37 @@
 }
 
 .main__div2__result__name {
+    font-family: 'MyWebFont';
     left: 0px;
     position: absolute;
-    width: 50%;
 }
 
 .main__div2__result__housepics {
     position: absolute;
     right: 0px;
-    width: 50%;
+}
+
+.main__div2__pics {
+    height: auto;
+    width: 100%;
+}
+
+input[type=button] {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 4px solid #ddd;
+    border-radius: 5px;
+    font-family: 'MyWebFont';
+    font-size: 10px;
+    padding: 5px, 15px;
+}
+
+input[type=button]:hover {
+    color: red;
+}
+
+input[type=text] {
+    font-family: 'MyWebFont';
+    font-size: 15px;
+    text-align: center;
+    width: 230px;
 }
