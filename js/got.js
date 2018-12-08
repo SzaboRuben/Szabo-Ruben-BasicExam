@@ -15,6 +15,8 @@ function successGetGameOfThronesCharacterDatas(xhttp) {
   // Innen hívhatod meg a többi függvényed
   putArrayInOrder(userDatas);
   filterOnlyAlive(userDatas);
+
+  return userDatas;
 }
 
 function putArrayInOrder(userDatas) {
@@ -79,7 +81,7 @@ function createTableRows(aliveUserDatas) {
 // function preAsideSearchResult2(i) {
 //   var userDatas = filterOnlyAlive();
 //   console.log(userDatas);
-//   var result = userDatas[i];
+//   var result = `${userDatas}${[i]}`;
 //   asideSearchResult2(result);
 // }
 
