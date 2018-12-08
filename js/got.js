@@ -76,13 +76,19 @@ function createTableRows(aliveUserDatas) {
   }
   tableElements.innerHTML = firstRows;
   startSearch(aliveUserDatas, aliveUserDatas.length);
+  getTableElements();
+  asideSearchResult2(aliveUserDatas);
+}
+function getTableElements() {
+  var container = document.querySelector('#main__div1');
+  return container;
 }
 
 // function preAsideSearchResult2(i) {
-//   var userDatas = filterOnlyAlive();
-//   console.log(userDatas);
-//   var result = `${userDatas}${[i]}`;
-//   asideSearchResult2(result);
+//   var userDatas = getTableElements();
+//   var result = userDatas.children;
+//   asideSearchResult2();
+//   return result[i].textContent;
 // }
 
 function asideSearchResult2(filteredArray) {
@@ -109,7 +115,6 @@ function asideSearchResult2(filteredArray) {
   }
 
   resultField.innerHTML = result;
-  return result;
 }
 
 function startSearch(characters, length) {
@@ -121,7 +126,9 @@ function startSearch(characters, length) {
 }
 
 function asideSearchResult(filteredArray, arrayLength) {
-  var searchFieldValue = document.getElementById('searchFieldValue').value;
+  var searchFieldValue = document
+    .getElementById('searchFieldValue')
+    .value.toLowerCase();
   var resultField = document.getElementById('main__div2__result');
   var result = '';
   var cimer = '';
@@ -132,7 +139,7 @@ function asideSearchResult(filteredArray, arrayLength) {
     } else {
       cimer = '';
     }
-    if (searchFieldValue === filteredArray[i].name) {
+    if (searchFieldValue === filteredArray[i].name.toLowerCase()) {
       result += `
       <div><img  class="main__div2__pics" src="/${
   filteredArray[i].picture
