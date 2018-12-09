@@ -99,7 +99,7 @@ function asideSearchResult2(filteredArray) {
   }
   var result =
     `
-      <div><img src="/${filteredArray.picture}" alt="no picture for ${filteredArray.name}"></div>
+      <div><img class="main__div2__pics" src="/${filteredArray.picture}" alt="no picture for ${filteredArray.name}"></div>
       <span class="main__div2__result__name">${filteredArray.name} </span>
      <span class="main__div2__result__housepics"> ${cimer}</span>
       <br>
