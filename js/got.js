@@ -64,6 +64,9 @@ function createDiv2() {
 }
 
 function createTableRows(aliveUserDatas) {
+  var divArray = `
+              <div class="divArray" id="divArray">${JSON.stringify(aliveUserDatas, null, 4)}</div>
+                  `;
   var tableElements = document.getElementById('main__div1');
   var firstRows = '';
   for (var i = 0; i < aliveUserDatas.length; i += 1) {
@@ -74,27 +77,19 @@ function createTableRows(aliveUserDatas) {
     </div>
       `;
   }
-  tableElements.innerHTML = firstRows;
+  tableElements.innerHTML = divArray + firstRows;
   startSearch(aliveUserDatas, aliveUserDatas.length);
-  getTableElements();
-  asideSearchResult2(aliveUserDatas);
-}
-function getTableElements() {
-  var container = document.querySelector('#main__div1');
-  return container;
 }
 
-// function preAsideSearchResult2(i) {
-//   var userDatas = getTableElements();
-//   var result = userDatas.children;
-//   asideSearchResult2();
-//   return result[i].textContent;
-// }
+
+function preAsideSearchResult2(i) {
+  var divPreArray = document.getElementById('divArray');
+  var filteredArray = JSON.parse(divPreArray.innerHTML);
+  asideSearchResult2(filteredArray[i]);
+}
 
 function asideSearchResult2(filteredArray) {
-  var searchFieldValue = document.getElementById('searchFieldValue').value;
   var resultField = document.getElementById('main__div2__result');
-  var result = '';
   var cimer = '';
   if (filteredArray.house) {
     cimer = `<img src="/assets/houses/${filteredArray.house}.png"
@@ -102,17 +97,15 @@ function asideSearchResult2(filteredArray) {
   } else {
     cimer = '';
   }
-  if (searchFieldValue === filteredArray.name) {
-    result += `
-      <img src="/${filteredArray.picture}" alt="no picture for ${
-  filteredArray.name
-}">
+  var result =
+    `
+      <div><img src="/${filteredArray.picture}" alt="no picture for ${filteredArray.name}"></div>
       <span class="main__div2__result__name">${filteredArray.name} </span>
      <span class="main__div2__result__housepics"> ${cimer}</span>
       <br>
       <p>${filteredArray.bio}</p>
       `;
-  }
+
 
   resultField.innerHTML = result;
 }
